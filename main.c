@@ -5,7 +5,7 @@ int main(void)
 	int q = 158;
 	int *ptr = &q;
 	//ft_printf("Bonjour %% %+# 025.1234d\n" ,57);
-	printf("%25i\n", -142536);
+	printf("%25s\n", -142536);
 	printf("%+5i\n", 142536);
 	printf("% i\n", 142536);
 	printf("%020i\n", -142536);

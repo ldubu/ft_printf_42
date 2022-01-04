@@ -13,10 +13,6 @@
 #ifndef FT_STRUCT
 # define FT_STRUCT
 
-# ifndef HEXA
-#  define HEXA ["0","1","2","3","4","5","6","7","8","9","A","B","C","D","F"]
-# endif
-
 typedef struct flags
 {
 	int		minus_fla;
