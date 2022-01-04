@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_struct.h                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/04 11:02:51 by ldubuche          #+#    #+#             */
-/*   Updated: 2022/01/04 11:02:51 by ldubuche         ###   ########.fr       */
+/*   Created: 2022/01/04 18:46:52 by ldubuche          #+#    #+#             */
+/*   Updated: 2022/01/04 18:46:52 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "../includes/ft_printf.h"
 
-#ifndef FT_STRUCT
-# define FT_STRUCT
-
-# ifndef HEXA
-#  define HEXA ["0","1","2","3","4","5","6","7","8","9","A","B","C","D","F"]
-# endif
-
-typedef struct flags
+char	*ft_strjoin(char const *s1, char const*s2)
 {
-	int		minus_fla;
-	int		plus_fla;
-	int		space_fla;
-	int		diese_fla;
-	int		zero_fla;
+	char	*new_s;
+	size_t	size;
+	int		i;
 
-	int		width;
-	int		precision;
-
-	char	types;
-
-	int		size;
-	va_list	ptr;
-} f_struct;
-
-#endif
+	i = 0;
+	size = ft_strlen(s1) + ft_strlen(s2);
+	new_s = (char *) malloc(sizeof(char) * (size + 1));
+	if (!new_s)
+		return (NULL);
+	while (*s1)
+		new_s[i++] = *s1++;
+	while (*s2)
+		new_s[i++] = *s2++;
+	new_s[i] = '\0';
+	return (new_s);
+}

@@ -1,35 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_unsi_itoa.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/04 11:02:15 by ldubuche          #+#    #+#             */
-/*   Updated: 2022/01/04 11:02:15 by ldubuche         ###   ########.fr       */
+/*   Created: 2022/01/04 17:56:51 by ldubuche          #+#    #+#             */
+/*   Updated: 2022/01/04 17:56:51 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../includes/ft_printf.h"
 
-int	ft_printf(const char *str, ...)
+static long long	ft_charnum(unsigned int n, int *i)
 {
-	va_list	ptr;
-	int		len;
+	long long	d;
 
-	len = 0;
-	va_start(ptr, str);
-	
-	while (*str)
+	d = 1;
+	while (n / d > 9)
 	{
-		if (*str == '%')
-		{
-			str++;
-			len = ft_flags(ptr, &str, len);
-		}
-		ft_putchar(*str++);
-		len++;
+		*i = *i + 1;
+		d *= 10;
 	}
-	va_end(ptr);
-	return(len);	
+	return (d);
+}
+
+char	*ft_itoa(int n)
+{
+	int				i;
+	long long		d;
+	char			*s;
+
+	i = 0;
+	d = ft_charnum(n, &i);
+	s = (char *) malloc(sizeof(char) * (i + 2));
+	if (s == NULL)
+		return (s);
+	i = 0;
+	while (d > 0)
+	{
+		s[i++] = ((n % (d * 10)) / d) + 48;
+		d /= 10;
+	}
+	s[i] = '\0';
+	return (s);
 }
