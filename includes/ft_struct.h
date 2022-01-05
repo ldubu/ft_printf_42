@@ -29,6 +29,7 @@ typedef struct flags
 	int		size;
 
 	int		len;
+	int		i;
 } f_struct;
 
 #endif

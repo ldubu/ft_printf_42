@@ -22,9 +22,8 @@ int	ft_flags(va_list ptr, const char **str, int len)
 		ft_putstr("%");
 		return (++len);
 	}
+	ft_ini_struct(&f1);
 	ft_symbols(&f1, str);
-	f1.width = 0;
-	f1.pre = 0;
 	ft_width_precision(&f1, str);
 	types = *(ft_strrchr("cspdiuxX", **str));
 	if (types)
@@ -94,5 +93,5 @@ void	ft_args_to_str(f_struct *f1, va_list ptr)
 		str_args = ft_toupper(ft_hexa(va_arg(ptr, unsigned int)));
 	f1->size = ft_strlen(str_args);
 	f1->len = f1->len + f1->size;
-	ft_putstr(str_args);
+	ft_putargs(f1, str_args);
 }

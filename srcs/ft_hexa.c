@@ -39,4 +39,3 @@ char	*ft_hexa(unsigned int n)
 	ft_freestr(temp, temp2);
 	return (str);
 }
-

@@ -12,7 +12,10 @@ SRCS = 	main.c \
 		srcs/ft_hexa.c \
 		srcs/ft_itoa.c \
 		srcs/ft_strlen.c \
-		srcs/ft_strjoin.c
+		srcs/ft_strjoin.c \
+		srcs/ft_putargs.c \
+		srcs/ft_ini_struct.c \
+		srcs/ft_write_args.c \
 OBJ = $(SRCS:%.c=%.o)
 RM = rm -rf
 
