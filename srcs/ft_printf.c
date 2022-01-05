@@ -19,7 +19,6 @@ int	ft_printf(const char *str, ...)
 
 	len = 0;
 	va_start(ptr, str);
-	
 	while (*str)
 	{
 		if (*str == '%')
@@ -31,5 +30,5 @@ int	ft_printf(const char *str, ...)
 		len++;
 	}
 	va_end(ptr);
-	return(len);	
+	return (len);
 }

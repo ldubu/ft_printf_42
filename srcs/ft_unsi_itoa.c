@@ -24,7 +24,7 @@ static long long	ft_charnum(unsigned int n, int *i)
 	return (d);
 }
 
-char	*ft_itoa(int n)
+char	*ft_unsi_itoa(int n)
 {
 	int				i;
 	long long		d;

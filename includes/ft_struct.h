@@ -27,7 +27,8 @@ typedef struct flags
 	char	types;
 
 	int		size;
-	va_list	ptr;
+
+	int		len;
 } f_struct;
 
 #endif

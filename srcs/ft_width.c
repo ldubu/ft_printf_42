@@ -9,12 +9,13 @@
 /*   Updated: 2022/01/04 11:48:28 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../includes/ft_print.h"
+#include "../includes/ft_printf.h"
 
-int	ft_width(va_list ptr, char *str, int len, f_struct f1)
+int	ft_width(f_struct *f1, char *str)
 {
 	char *retour;
-
+	
 	retour = NULL;
-	if ((f1.types == 's' && f1.precision > f1.size)
+
+
 }

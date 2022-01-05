@@ -12,9 +12,16 @@
 
 #include "../includes/ft_printf.h"
 
-int	ft_toupper(int c)
+char	*ft_toupper(char *s)
 {
-	if (c >= 97 && c <= 122)
-		c = c - 32;
-	return (c);
+	int i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] >= 97 && s[i] <= 122)
+			s[i] = s[i] - 32;
+		i++;
+	}
+	return (s);
 }

@@ -27,9 +27,18 @@ void ft_symbols(f_struct *f1, const char **str);
 void	ft_width_precision(f_struct *f1, const char **str);
 void ft_putstr(char *s);
 void ft_putchar(char c);
-int	ft_toupper(int c);
-
+char	*ft_toupper(char *s);
+size_t	ft_strlen(const char *s);
+char	*ft_strjoin(char const *s1, char const*s2);
 char	*ft_c_to_str(char c);
+char	*ft_address(unsigned long);
+char	*ft_freestr(char *temp, char *temp2);
+char	*ft_itoa(int n);
+char	*ft_unsi_itoa(int n);
+char	*ft_hexa(unsigned int n);
+size_t	ft_strlen(const char *s);
+void	ft_args_to_str(f_struct *f1, va_list ptr);
+char	*ft_null(void);
 
 
 #endif

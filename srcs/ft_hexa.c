@@ -18,29 +18,25 @@ char	*ft_hexa(unsigned int n)
 	char	*temp;
 	char	*temp2;
 
+	temp2 = NULL;
 	hexa = "0123456789abcdef";
 	if (n / 16 == 0)
 	{
 		str = ft_c_to_str(hexa[n]);
 		if (!str)
 			return (NULL);
-		return (str);			
+		return (str);
 	}
 	temp = ft_hexa(n / 16);
+	if (!temp)
+		return (ft_freestr(temp, temp2));
 	temp2 = ft_c_to_str(hexa[n % 16]);
-	if (!temp || !temp2)
-		return (NULL);   //risque de leaks a retravailler
-	str = ft_strjoin(temp, temp2); //rajouter protection
-	free (temp);
-	free (temp2);
+	if (!temp2)
+		return (ft_freestr(temp, temp2));
+	str = ft_strjoin(temp, temp2);
+	if (!str)
+		return (NULL);
+	ft_freestr(temp, temp2);
 	return (str);
 }
 
-int main(void)
-{
-	char	*str;
-
-	str = ft_hexa(956);
-	printf("%s\n", str);
-	return(0);
-}
