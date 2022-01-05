@@ -24,7 +24,7 @@ int	ft_flags(va_list ptr, const char **str, int len)
 	}
 	ft_symbols(&f1, str);
 	f1.width = 0;
-	f1.precision = 0;
+	f1.pre = 0;
 	ft_width_precision(&f1, str);
 	types = *(ft_strrchr("cspdiuxX", **str));
 	if (types)
@@ -68,7 +68,7 @@ void	ft_width_precision(f_struct *f1, const char **str)
 		(*str)++;
 		while (ft_strrchr("0123456789", **str) != NULL)
 		{
-			f1->precision = f1->precision * 10 + **str - '0';
+			f1->pre = f1->pre * 10 + **str - '0';
 			(*str)++;
 		}
 	}

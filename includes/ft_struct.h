@@ -22,7 +22,7 @@ typedef struct flags
 	int		zero_fla;
 
 	int		width;
-	int		precision;
+	int		pre;
 
 	char	types;
 
