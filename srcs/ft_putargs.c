@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "../includes/ft_printf.h"
 
-void	ft_putargs(f_struct *f1, char *str)
+void	ft_putargs(t_struct *f1, char *str)
 {
 	int	space_nbr;
 
@@ -36,7 +36,7 @@ void	ft_putargs(f_struct *f1, char *str)
 	}
 }
 
-void	ft_putspace(f_struct *f1, int n)
+void	ft_putspace(t_struct *f1, int n)
 {
 	while (n-- > 0)
 	{
@@ -45,7 +45,7 @@ void	ft_putspace(f_struct *f1, int n)
 	}
 }
 
-int	ft_space_nbr(f_struct *f1)
+int	ft_space_nbr(t_struct *f1)
 {
 	int	n;
 
@@ -62,7 +62,7 @@ int	ft_space_nbr(f_struct *f1)
 	return (n);
 }
 
-void	ft_putzero(f_struct *f1, int n)
+void	ft_putzero(t_struct *f1, int n)
 {
 	while (n-- > 0)
 	{
@@ -71,7 +71,7 @@ void	ft_putzero(f_struct *f1, int n)
 	}
 }
 
-void	ft_sign(f_struct *f1, char *str)
+void	ft_sign(t_struct *f1, char *str)
 {
 	if (str[0] == '-')
 	{

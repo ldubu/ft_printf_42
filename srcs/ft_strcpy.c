@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ini_struct.c                                    :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/05 15:52:26 by ldubuche          #+#    #+#             */
-/*   Updated: 2022/01/06 14:47:18 by ldubuche         ###   ########.fr       */
+/*   Created: 2022/01/06 10:14:10 by ldubuche          #+#    #+#             */
+/*   Updated: 2022/01/06 10:49:53 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	ft_ini_struct(t_struct *f1)
+char	*ft_strcpy(const char *src, size_t dstsize)
 {
-	f1->minus_fla = 0;
-	f1->plus_fla = 0;
-	f1->space_fla = 0;
-	f1->diese_fla = 0;
-	f1->zero_fla = 0;
-	f1->width = 0;
-	f1->pre = -1;
-	f1->types = '0';
-	f1->size = 0;
-	f1->len = 0;
-	f1->i = 0;
+	char	*dst;
+	int		i;
+
+	dst = (char *) malloc(sizeof(char) * dstsize + 1);
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
 }

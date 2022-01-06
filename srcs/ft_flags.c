@@ -15,7 +15,7 @@
 int	ft_flags(va_list ptr, const char **str, int len)
 {
 	char		types;
-	f_struct	f1;
+	t_struct	f1;
 
 	if (**str == '%')
 	{
@@ -37,7 +37,7 @@ int	ft_flags(va_list ptr, const char **str, int len)
 	return (len);
 }
 
-void	ft_symbols(f_struct *f1, const char **str)
+void	ft_symbols(t_struct *f1, const char **str)
 {
 	while (ft_strrchr("-+0# ", **str) != NULL)
 	{
@@ -55,7 +55,7 @@ void	ft_symbols(f_struct *f1, const char **str)
 	}
 }
 
-void	ft_width_precision(f_struct *f1, const char **str)
+void	ft_width_precision(t_struct *f1, const char **str)
 {
 	while (ft_strrchr("0123456789", **str) != NULL)
 	{
@@ -73,14 +73,23 @@ void	ft_width_precision(f_struct *f1, const char **str)
 	}
 }
 
-void	ft_args_to_str(f_struct *f1, va_list ptr)
+void	ft_args_to_str(t_struct *f1, va_list ptr)
 {
 	char	*str_args;
+	int		strlen;
 
 	if (f1->types == 'c')
 		str_args = ft_c_to_str(va_arg(ptr, int));
 	else if (f1->types == 's')
+	{
 		str_args = va_arg(ptr, char *);
+		//printf("str_args pour s %s\n", str_args);
+		if (str_args != NULL)
+		{
+			strlen = ft_strlen(str_args);
+			str_args = ft_strcpy(str_args, strlen);
+		}
+	}
 	else if (f1->types == 'p')
 		str_args = ft_address(va_arg(ptr, unsigned long));
 	else if (f1->types == 'd' || f1->types == 'i')
@@ -92,6 +101,9 @@ void	ft_args_to_str(f_struct *f1, va_list ptr)
 	else if (f1->types == 'X')
 		str_args = ft_toupper(ft_hexa(va_arg(ptr, unsigned int)));
 	f1->size = ft_strlen(str_args);
-	f1->len = f1->len + f1->size;
+	if (f1->types == 's' && f1->pre == -1)
+		f1->pre = f1->size;
+	f1->len = f1->len;
+	//printf("go until here .%s.\n", str_args);
 	ft_putargs(f1, str_args);
 }

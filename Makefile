@@ -1,4 +1,4 @@
-NAME = test
+NAME = libftprintf.a
 FLAGS = -Wall -Werror -Wextra 
 SRCS = 	main.c \
 		srcs/ft_printf.c \
@@ -16,24 +16,24 @@ SRCS = 	main.c \
 		srcs/ft_putargs.c \
 		srcs/ft_ini_struct.c \
 		srcs/ft_write_args.c \
+		srcs/ft_strcpy.c
 OBJ = $(SRCS:%.c=%.o)
 RM = rm -rf
 
 .c.o:
-	@gcc -c $< -o ${<:.c=.o}
+			@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+			
+$(NAME): 	$(OBJ)
+			@ar rc $(NAME) $(OBJ)
 
-$(NAME) : $(OBJ)
-	@gcc $(FLAGS) $(OBJ) -o $(NAME)
-
-all : $(NAME)
-
-flagoff: $(OBJ)
-	@gcc $(OBJ) -o $(NAME)
+all: 		$(NAME)
 
 clean:
-	$(RM) $(OBJ)
+			$(RM) $(OBJ)
 
-fclean: clean
-	$(RM) $(NAME)
+fclean:		clean
+			@$(RM) $(NAME)
 
-re: fclean all
+re: 		fclean all
+
+.PHONY: 	clean fclean

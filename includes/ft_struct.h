@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STRUCT
-# define FT_STRUCT
+#ifndef FT_STRUCT_H
+# define FT_STRUCT_H
 
 typedef struct flags
 {
@@ -30,6 +30,6 @@ typedef struct flags
 
 	int		len;
 	int		i;
-} f_struct;
+}	t_struct;
 
 #endif

@@ -2,15 +2,10 @@
 
 int main(void)
 {
-	int q = 158;
-	int *ptr = &q;
-	ft_printf("Bonjour %%\n");
-	ft_printf("%i\n", 142536);
-	ft_printf("%s\n", "hello");
-	ft_printf("%c\n", 'j');
-	ft_printf("%x\n", 956);
-	ft_printf("%p\n", ptr);
-	printf("%+025i\n", NULL);
-	printf("%25i\n", -52);
+	int len;
+	len = ft_printf(" NULL %s NULL ", NULL);
+	printf("\nretour ma fonction merdique %d\n", len);
+	len = printf(" NULL %s NULL ", (char *) NULL);
+	printf("\nretour la vraie fonction %d\n", len);
 	return (0);
 }
