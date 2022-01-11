@@ -19,7 +19,8 @@ int	ft_flags(va_list ptr, const char **str, int len)
 
 	if (**str == '%')
 	{
-		ft_putstr("%");
+		ft_putchar('%');
+		(*str)++;
 		return (++len);
 	}
 	ft_ini_struct(&f1);
@@ -85,13 +86,20 @@ void	ft_args_to_str(t_struct *f1, va_list ptr)
 		str_args = va_arg(ptr, char *);
 		//printf("str_args pour s %s\n", str_args);
 		if (str_args != NULL)
-		{
-			strlen = ft_strlen(str_args);
-			str_args = ft_strcpy(str_args, strlen);
-		}
+			str_args = ft_strcpy(str_args, ft_strlen(str_args));
+		else
+			str_args = ft_strcpy("(null)", 7);
 	}
 	else if (f1->types == 'p')
+	{
 		str_args = ft_address(va_arg(ptr, unsigned long));
+		strlen = ft_strncmp("0x0", str_args, 4);
+		if (strlen == 0)
+		{
+			free(str_args);
+			str_args = ft_strcpy("(nil)", 6);
+		}
+	}
 	else if (f1->types == 'd' || f1->types == 'i')
 		str_args = ft_itoa(va_arg(ptr, int));
 	else if (f1->types == 'u')
@@ -100,7 +108,8 @@ void	ft_args_to_str(t_struct *f1, va_list ptr)
 		str_args = ft_hexa(va_arg(ptr, unsigned int));
 	else if (f1->types == 'X')
 		str_args = ft_toupper(ft_hexa(va_arg(ptr, unsigned int)));
-	f1->size = ft_strlen(str_args);
+	if (str_args != NULL)
+		f1->size = ft_strlen(str_args);
 	if (f1->types == 's' && f1->pre == -1)
 		f1->pre = f1->size;
 	f1->len = f1->len;

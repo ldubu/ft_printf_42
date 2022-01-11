@@ -6,7 +6,7 @@
 /*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 16:20:24 by ldubuche          #+#    #+#             */
-/*   Updated: 2022/01/06 14:47:50 by ldubuche         ###   ########.fr       */
+/*   Updated: 2022/01/11 17:14:57 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_write_arg(t_struct *f1, char *str)
 {
 	//printf("go until write .%s.\n", str);
-	if (f1->zero_fla == 0)
+	if (f1->zero_fla == 0 && str != NULL)
 		ft_sign(f1, str);
 	//printf("go until write 1.%s.\n", str);
 	if (f1->diese_fla && (f1->types == 'x' || f1->types == 'X'))
@@ -47,7 +47,7 @@ void	ft_write_arg(t_struct *f1, char *str)
 		while (str[f1->i])
 			ft_gagner_3_lignes(f1, str);
 	}
-	if (str)
+	if (str != NULL)
 		free(str);
 }
 

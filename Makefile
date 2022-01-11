@@ -1,7 +1,6 @@
 NAME = libftprintf.a
 FLAGS = -Wall -Werror -Wextra 
-SRCS = 	main.c \
-		srcs/ft_printf.c \
+SRCS = 	srcs/ft_printf.c \
 		srcs/ft_putstr.c \
 		srcs/ft_flags.c \
 		srcs/ft_strrchr.c \
@@ -16,17 +15,22 @@ SRCS = 	main.c \
 		srcs/ft_putargs.c \
 		srcs/ft_ini_struct.c \
 		srcs/ft_write_args.c \
-		srcs/ft_strcpy.c
+		srcs/ft_strcpy.c \
+		srcs/ft_strncmp.c
+
 OBJ = $(SRCS:%.c=%.o)
+
 RM = rm -rf
 
 .c.o:
-			@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+			${CC} ${FLAGS} -c $< -o ${<:.c=.o}
 			
 $(NAME): 	$(OBJ)
-			@ar rc $(NAME) $(OBJ)
+			ar rc $(NAME) $(OBJ)
 
 all: 		$(NAME)
+
+bonus: all
 
 clean:
 			$(RM) $(OBJ)

@@ -20,6 +20,7 @@
 # include <string.h>
 # include "ft_struct.h"
 
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_flags(va_list ptr, const char **str, int len);
 int		ft_printf(const char *str, ...);
 int		ft_space_nbr(t_struct *f1);
@@ -45,7 +46,7 @@ char	*ft_strrchr(const char *s, int c);
 char	*ft_ini_strjoin(char *s, char c);
 char	*ft_address(unsigned long n);
 char	*ft_hexa(unsigned int n);
-char	*ft_unsi_itoa(int n);
+char	*ft_unsi_itoa(unsigned int n);
 char	*ft_c_to_str(char c);
 char	*ft_toupper(char *s);
 char	*ft_itoa(int n);
