@@ -6,3 +6,4 @@ printfTester
 libft/*
 libft
 *.gch
+libftprintf.a

@@ -65,6 +65,7 @@ void	ft_width_precision(t_struct *f1, const char **str)
 	}
 	if (**str == '.')
 	{
+		f1->pre = 0;
 		(*str)++;
 		while (ft_strrchr("0123456789", **str) != NULL)
 		{
@@ -113,6 +114,6 @@ void	ft_args_to_str(t_struct *f1, va_list ptr)
 	if (f1->types == 's' && f1->pre == -1)
 		f1->pre = f1->size;
 	f1->len = f1->len;
-	//printf("go until here .%s.\n", str_args);
+	//printf("go until here .%d.\n", f1->pre);
 	ft_putargs(f1, str_args);
 }
