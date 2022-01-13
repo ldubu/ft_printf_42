@@ -6,7 +6,7 @@
 /*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 16:20:24 by ldubuche          #+#    #+#             */
-/*   Updated: 2022/01/12 16:30:37 by ldubuche         ###   ########.fr       */
+/*   Updated: 2022/01/13 10:55:03 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,13 @@
 
 void	ft_write_arg(t_struct *f1, char *str)
 {
-	//printf("go until write .%s.\n", str);
-	if (f1->zero_fla == 0 && str != NULL && (f1->types == 'i' || f1->types == 'd'))
-		ft_sign(f1, str);
-	//printf("go until write 1.%s.\n", str);
-	if (f1->diese_fla && (f1->types == 'x' || f1->types == 'X') && ft_strncmp(str, "0", 2))
-	{
-		if (f1->types == 'x')
-			ft_putstr(("0x"));
-		else
-			ft_putstr("0X");
-		f1->len = f1->len + 2;
-	}
+	ft_check_sign_diese(f1, str);
 	ft_chara(f1, str);
-	//printf("go until write 2.%s.\n", str);
 	if (f1->types != 's' && f1->pre >= f1->size)
 	{
-		//printf("go until write 3.%s.\n", str);
 		while ((f1->pre)-- > f1->size)
 		{
 			ft_putchar('0');
-			//printf("str+pre\n");
 			f1->len = f1->len + 1;
 		}
 		while (str[f1->i])
@@ -42,13 +28,11 @@ void	ft_write_arg(t_struct *f1, char *str)
 	}
 	else if (f1->types == 's' && f1->pre < f1->size)
 	{
-		//printf("go until write 4.%s.\n", str);
 		while ((f1->pre)-- > 0)
 			ft_gagner_3_lignes(f1, str);
 	}
 	else
 	{
-		//printf("enter else 5.%s.\n", str);
 		while (str[f1->i])
 			ft_gagner_3_lignes(f1, str);
 	}
@@ -58,7 +42,6 @@ void	ft_write_arg(t_struct *f1, char *str)
 
 void	ft_gagner_3_lignes(t_struct *f1, char *str)
 {
-	//printf("3\n");
 	ft_putchar(str[f1->i]);
 	f1->i = f1->i + 1;
 	f1->len = f1->len + 1;
@@ -71,5 +54,21 @@ void	ft_chara(t_struct *f1, char *str)
 		ft_putchar('\0');
 		if (f1->width == 0)
 			f1->len = f1->len + 1;
+	}
+}
+
+void	ft_check_sign_diese(t_struct *f1, char *str)
+{
+	if (f1->zero_fla == 0 && str != NULL && (f1->types == 'i'
+			|| f1->types == 'd'))
+		ft_sign(f1, str);
+	if (f1->diese_fla && (f1->types == 'x' || f1->types == 'X')
+		&& ft_strncmp(str, "0", 2))
+	{
+		if (f1->types == 'x')
+			ft_putstr(("0x"));
+		else
+			ft_putstr("0X");
+		f1->len = f1->len + 2;
 	}
 }

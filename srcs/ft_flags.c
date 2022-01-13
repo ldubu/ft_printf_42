@@ -78,29 +78,13 @@ void	ft_width_precision(t_struct *f1, const char **str)
 void	ft_args_to_str(t_struct *f1, va_list ptr)
 {
 	char	*str_args;
-	int		strlen;
 
 	if (f1->types == 'c')
 		str_args = ft_c_to_str(va_arg(ptr, int));
 	else if (f1->types == 's')
-	{
-		str_args = va_arg(ptr, char *);
-		//printf("str_args pour s %s\n", str_args);
-		if (str_args != NULL)
-			str_args = ft_strcpy(str_args, ft_strlen(str_args));
-		else
-			str_args = ft_strcpy("(null)", 7);
-	}
+		str_args = ft_str_ptr(1, va_arg(ptr, char *));
 	else if (f1->types == 'p')
-	{
-		str_args = ft_address(va_arg(ptr, unsigned long));
-		strlen = ft_strncmp("0x0", str_args, 4);
-		if (strlen == 0)
-		{
-			free(str_args);
-			str_args = ft_strcpy("(nil)", 6);
-		}
-	}
+		str_args = ft_str_ptr(2, ft_address(va_arg(ptr, unsigned long)));
 	else if (f1->types == 'd' || f1->types == 'i')
 		str_args = ft_itoa(va_arg(ptr, int));
 	else if (f1->types == 'u')
@@ -114,6 +98,28 @@ void	ft_args_to_str(t_struct *f1, va_list ptr)
 	if (f1->types == 's' && f1->pre == -1)
 		f1->pre = f1->size;
 	f1->len = f1->len;
-	//printf("go until here .%d.\n", f1->pre);
 	ft_putargs(f1, str_args);
+}
+
+char	*ft_str_ptr(int type, char *str)
+{
+	int	strlen;
+
+	if (type == 1)
+	{
+		if (str != NULL)
+			str = ft_strcpy(str, ft_strlen(str));
+		else
+			str = ft_strcpy("(null)", 7);
+	}
+	else if (type == 2)
+	{
+		strlen = ft_strncmp("0x0", str, 4);
+		if (strlen == 0)
+		{
+			free(str);
+			str = ft_strcpy("(nil)", 6);
+		}
+	}
+	return (str);
 }

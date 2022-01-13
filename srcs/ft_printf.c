@@ -23,7 +23,6 @@ int	ft_printf(const char *str, ...)
 	{
 		if (*str == '%')
 		{
-			//printf("len ft_printf if %i\n", len);
 			str++;
 			len = ft_flags(ptr, &str, len);
 		}

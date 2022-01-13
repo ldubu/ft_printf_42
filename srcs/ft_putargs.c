@@ -15,7 +15,8 @@ void	ft_putargs(t_struct *f1, char *str)
 {
 	int	space_nbr;
 
-	if (f1->space_fla == 1 && f1->width == 0 && f1->types != 's' && str[0] != '-')
+	if (f1->space_fla == 1 && f1->width == 0 && f1->types != 's'
+		&& str[0] != '-')
 	{	
 		ft_putchar(' ');
 		f1->len = f1->len + 1;
@@ -52,20 +53,20 @@ int	ft_space_nbr(t_struct *f1)
 	int	n;
 
 	n = 0;
-	//printf("width %d, pre %d, size %d\n", f1->width, f1->pre, f1->size);
 	if (f1->width != 0 || f1->pre != f1->size)
 	{
 		if (f1->width > f1->pre)
 		{
 			if (f1->size >= f1->pre || (f1->size < f1->pre && f1->types == 's'))
 				n = f1->width - f1->size;
-			else if (f1->size < f1->pre || (f1->size > f1->pre && f1->types == 's'))
+			else if (f1->size < f1->pre || (f1->size > f1->pre
+					&& f1->types == 's'))
 				n = f1->width - f1->pre;
 		}
-		else if (f1->types == 's' && f1->size > f1->width && f1->width > f1->pre)
+		else if (f1->types == 's' && f1->size > f1->width
+			&& f1->width > f1->pre)
 			n = f1->width - f1->pre;
 	}	
-	//printf("%d\n", n);
 	return (n);
 }
 
