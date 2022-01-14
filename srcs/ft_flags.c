@@ -79,20 +79,21 @@ void	ft_args_to_str(t_struct *f1, va_list ptr)
 {
 	char	*str_args;
 
+	str_args = NULL;
 	if (f1->types == 'c')
 		str_args = ft_c_to_str(va_arg(ptr, int));
 	else if (f1->types == 's')
-		str_args = ft_str_ptr(1, va_arg(ptr, char *));
+		str_args = ft_str_ptr(1, va_arg(ptr, char *), f1);
 	else if (f1->types == 'p')
-		str_args = ft_str_ptr(2, ft_address(va_arg(ptr, unsigned long)));
+		str_args = ft_str_ptr(2, ft_address(va_arg(ptr, unsigned long)), f1);
 	else if (f1->types == 'd' || f1->types == 'i')
-		str_args = ft_itoa(va_arg(ptr, int));
+		str_args = ft_pre_zero(ft_itoa(va_arg(ptr, int)), f1);
 	else if (f1->types == 'u')
-		str_args = ft_unsi_itoa(va_arg(ptr, unsigned int));
+		str_args = ft_pre_zero(ft_unsi_itoa(va_arg(ptr, unsigned int)), f1);
 	else if (f1->types == 'x')
-		str_args = ft_hexa(va_arg(ptr, unsigned int));
+		str_args = ft_pre_zero(ft_hexa(va_arg(ptr, unsigned int)), f1);
 	else if (f1->types == 'X')
-		str_args = ft_toupper(ft_hexa(va_arg(ptr, unsigned int)));
+		str_args = ft_toupper(ft_pre_zero(ft_hexa(va_arg(ptr, unsigned int)), f1));
 	if (str_args != NULL)
 		f1->size = ft_strlen(str_args);
 	if (f1->types == 's' && f1->pre == -1)
@@ -101,7 +102,7 @@ void	ft_args_to_str(t_struct *f1, va_list ptr)
 	ft_putargs(f1, str_args);
 }
 
-char	*ft_str_ptr(int type, char *str)
+char	*ft_str_ptr(int type, char *str, t_struct *f1)
 {
 	int	strlen;
 
@@ -110,7 +111,10 @@ char	*ft_str_ptr(int type, char *str)
 		if (str != NULL)
 			str = ft_strcpy(str, ft_strlen(str));
 		else
+		{
 			str = ft_strcpy("(null)", 7);
+			f1->null = 1;
+		}
 	}
 	else if (type == 2)
 	{
@@ -118,8 +122,21 @@ char	*ft_str_ptr(int type, char *str)
 		if (strlen == 0)
 		{
 			free(str);
-			str = ft_strcpy("(nil)", 6);
+			str = ft_strcpy(OS_NULL, 6);
 		}
+	}
+	return (str);
+}
+
+char *ft_pre_zero(char *str, t_struct *f1)
+{
+	if (f1->pre == 0 && ft_strncmp("0", str, 2))
+	{
+		free(str);
+		str = (char *) malloc(sizeof(char) * 1);
+		if (!str)
+			return (NULL);
+		str[0] = '\0';
 	}
 	return (str);
 }

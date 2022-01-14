@@ -6,7 +6,7 @@
 /*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 16:20:24 by ldubuche          #+#    #+#             */
-/*   Updated: 2022/01/13 10:55:03 by ldubuche         ###   ########.fr       */
+/*   Updated: 2022/01/14 15:37:22 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ void	ft_write_arg(t_struct *f1, char *str)
 	}
 	else if (f1->types == 's' && f1->pre < f1->size)
 	{
-		while ((f1->pre)-- > 0)
-			ft_gagner_3_lignes(f1, str);
+		if (f1->null != 1)
+			while ((f1->pre)-- > 0)
+				ft_gagner_3_lignes(f1, str);
 	}
 	else
 	{
@@ -52,8 +53,7 @@ void	ft_chara(t_struct *f1, char *str)
 	if (f1->types == 'c' && str[0] == 0)
 	{
 		ft_putchar('\0');
-		if (f1->width == 0)
-			f1->len = f1->len + 1;
+		f1->len = f1->len + 1;
 	}
 }
 

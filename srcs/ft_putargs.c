@@ -21,19 +21,20 @@ void	ft_putargs(t_struct *f1, char *str)
 		ft_putchar(' ');
 		f1->len = f1->len + 1;
 	}
-	space_nbr = ft_space_nbr(f1);
+	space_nbr = ft_space_nbr(f1, str);
 	if (f1->minus_fla == 1)
 	{
 		ft_write_arg(f1, str);
 		ft_putspace(f1, space_nbr);
 	}
-	else if (f1->zero_fla == 1)
+	else if (f1->zero_fla == 1 && f1->pre == -1)
 	{
 		ft_putzero(f1, space_nbr - ft_sign(f1, str));
 		ft_write_arg(f1, str);
 	}
 	else
 	{
+		f1->zero_fla = 0;
 		ft_putspace(f1, space_nbr);
 		ft_write_arg(f1, str);
 	}
@@ -48,7 +49,7 @@ void	ft_putspace(t_struct *f1, int n)
 	}
 }
 
-int	ft_space_nbr(t_struct *f1)
+int	ft_space_nbr(t_struct *f1, char *str)
 {
 	int	n;
 
@@ -66,7 +67,13 @@ int	ft_space_nbr(t_struct *f1)
 		else if (f1->types == 's' && f1->size > f1->width
 			&& f1->width > f1->pre)
 			n = f1->width - f1->pre;
-	}	
+		if (f1->types == 'c' && f1->width != 0 && str[0] == 0)
+			n = n - 1;
+	}
+	if (f1->diese_fla == 1)
+		n = n - 2;
+	if (str[0] == '-' && f1->types != 's' && f1->pre > f1->size)
+		n = n - 1;
 	return (n);
 }
 
@@ -85,7 +92,10 @@ int	ft_sign(t_struct *f1, char *str)
 	{
 		ft_putchar('-');
 		f1->i = 1;
-		f1->size = f1->size - 1;
+		if (f1->zero_fla == 1)
+			f1->size = f1->size - 1;
+		if (f1->pre > 0)
+			f1->pre = f1->pre + 1;
 		f1->len = f1->len + 1;
 	}
 	else if (f1->plus_fla)

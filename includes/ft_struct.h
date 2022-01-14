@@ -30,6 +30,7 @@ typedef struct flags
 
 	int		len;
 	int		i;
+	int		null;
 }	t_struct;
 
 #endif

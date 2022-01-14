@@ -6,7 +6,7 @@
 /*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 15:52:26 by ldubuche          #+#    #+#             */
-/*   Updated: 2022/01/12 15:57:15 by ldubuche         ###   ########.fr       */
+/*   Updated: 2022/01/14 15:34:03 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ void	ft_ini_struct(t_struct *f1)
 	f1->size = 0;
 	f1->len = 0;
 	f1->i = 0;
+	f1->null = 0;
 }

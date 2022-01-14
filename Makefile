@@ -22,7 +22,7 @@ OBJ = $(SRCS:%.c=%.o)
 
 RM = rm -rf
 
-.c.o:
+.c.o: includes/ft_printf.h ft_includes/ft_struct.h
 			${CC} ${FLAGS} -c $< -o ${<:.c=.o}
 			
 $(NAME): 	$(OBJ)

@@ -7,3 +7,4 @@ libft/*
 libft
 *.gch
 libftprintf.a
+ft_printf_tester/
