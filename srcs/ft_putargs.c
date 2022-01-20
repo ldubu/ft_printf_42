@@ -56,24 +56,26 @@ int	ft_space_nbr(t_struct *f1, char *str)
 	n = 0;
 	if (f1->width != 0 || f1->pre != f1->size)
 	{
-		if (f1->width > f1->pre)
+		if (f1->width >= f1->pre || f1->types == 's')
 		{
-			if (f1->size >= f1->pre || (f1->size < f1->pre && f1->types == 's'))
-				n = f1->width - f1->size;
-			else if (f1->size < f1->pre || (f1->size > f1->pre
+			if ((f1->size < f1->pre && f1->types != 's') || (f1->size > f1->pre
 					&& f1->types == 's'))
 				n = f1->width - f1->pre;
+			else if ((f1->size >= f1->pre) || (f1->size < f1->pre && f1->types == 's'))
+				n = f1->width - f1->size ;
 		}
 		else if (f1->types == 's' && f1->size > f1->width
 			&& f1->width > f1->pre)
-			n = f1->width - f1->pre;
-		if (f1->types == 'c' && f1->width != 0 && str[0] == 0)
-			n = n - 1;
+			n = f1->width - f1->pre;		
 	}
 	if (f1->diese_fla == 1)
 		n = n - 2;
-	if (str[0] == '-' && f1->types != 's' && f1->pre > f1->size)
+	if (str[0] == '-' && f1->types != 's' && f1->pre >= f1->size)
 		n = n - 1;
+	if (f1->is_zero == 1 && f1->width > 0)
+		n = n + 1;
+	if (f1->types == 'c' && f1->width != 0 && str[0] == 0)
+			n = n - 1;
 	return (n);
 }
 

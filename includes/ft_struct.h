@@ -31,6 +31,7 @@ typedef struct flags
 	int		len;
 	int		i;
 	int		null;
+	int		is_zero;
 }	t_struct;
 
 #endif

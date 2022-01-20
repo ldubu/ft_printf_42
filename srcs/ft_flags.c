@@ -130,13 +130,9 @@ char	*ft_str_ptr(int type, char *str, t_struct *f1)
 
 char *ft_pre_zero(char *str, t_struct *f1)
 {
-	if (f1->pre == 0 && ft_strncmp("0", str, 2))
+	if (f1->pre == 0 && ft_strncmp("0", str, 2) == 0)
 	{
-		free(str);
-		str = (char *) malloc(sizeof(char) * 1);
-		if (!str)
-			return (NULL);
-		str[0] = '\0';
+		f1->is_zero = 1;
 	}
 	return (str);
 }

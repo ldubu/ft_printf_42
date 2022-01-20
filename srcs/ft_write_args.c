@@ -6,7 +6,7 @@
 /*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 16:20:24 by ldubuche          #+#    #+#             */
-/*   Updated: 2022/01/14 15:37:22 by ldubuche         ###   ########.fr       */
+/*   Updated: 2022/01/17 09:58:01 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ void	ft_write_arg(t_struct *f1, char *str)
 {
 	ft_check_sign_diese(f1, str);
 	ft_chara(f1, str);
-	if (f1->types != 's' && f1->pre >= f1->size)
+	if (f1->is_zero == 1)
+		f1->is_zero = 2;
+	else if (f1->types != 's' && f1->pre >= f1->size)
 	{
 		while ((f1->pre)-- > f1->size)
 		{
