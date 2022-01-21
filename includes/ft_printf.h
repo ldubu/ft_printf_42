@@ -23,8 +23,7 @@
 # ifndef OS_NULL
 #  ifdef __unix__
 #   define OS_NULL "(nil)"
-#  endif
-#  ifdef __Apple__
+#  else
 #   define OS_NULL "0x0"
 #  endif
 # endif

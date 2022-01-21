@@ -113,7 +113,8 @@ char	*ft_str_ptr(int type, char *str, t_struct *f1)
 		else
 		{
 			str = ft_strcpy("(null)", 7);
-			f1->null = 1;
+			if (OS_NULL != "0x0")
+				f1->null = 1;
 		}
 	}
 	else if (type == 2)
