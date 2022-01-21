@@ -10,15 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef FT_PRINTF_BONUS_H
+# define FT_PRINTF_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
 # include <stdio.h>
 # include <string.h>
-# include "ft_struct.h"
+# include "ft_struct_bonus.h"
 
 # ifndef OS_NULL
 #  ifdef __unix__
