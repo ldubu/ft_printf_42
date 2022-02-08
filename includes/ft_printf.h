@@ -61,7 +61,7 @@ char	*ft_unsi_itoa(unsigned int n);
 char	*ft_address(unsigned long n);
 char	*ft_hexa(unsigned int n);
 char	*ft_c_to_str(char c);
-char	*ft_toupper(char *s);
+char	*ft_upper(char *s);
 char	*ft_itoa(int n);
 char	*ft_null(void);
 

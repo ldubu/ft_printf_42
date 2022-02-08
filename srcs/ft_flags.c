@@ -93,7 +93,7 @@ void	ft_args_to_str(t_struct *f1, va_list ptr)
 	else if (f1->types == 'x')
 		str_args = ft_pre(ft_hexa(va_arg(ptr, unsigned int)), f1);
 	else if (f1->types == 'X')
-		str_args = ft_toupper(ft_pre(ft_hexa(va_arg(ptr, unsigned int)), f1));
+		str_args = ft_upper(ft_pre(ft_hexa(va_arg(ptr, unsigned int)), f1));
 	if (str_args != NULL)
 		f1->size = ft_strlen(str_args);
 	if (f1->types == 's' && f1->pre == -1)
@@ -113,7 +113,7 @@ char	*ft_str_ptr(int type, char *str, t_struct *f1)
 		else
 		{
 			str = ft_strcpy("(null)", 7);
-			if (OS_NULL != "0x0")
+			if (ft_strncmp(OS_NULL, "0x0", 3) == 0)
 				f1->null = 1;
 		}
 	}
