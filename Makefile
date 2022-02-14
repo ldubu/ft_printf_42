@@ -1,8 +1,16 @@
+CC =	gcc
+
+CFLAGS = -Wall -Werror -Wextra 
+
+IFLAGS = -I includes/
+
 NAME = libftprintf.a
 
-FLAGS = -Wall -Werror -Wextra 
+RM = rm -rf
 
-IFLAGS = -I includes
+HEADER = includes/ft_printf.h includes/ft_struct.h
+
+OBJS_PATH = ./objs/
 
 _GREY=	$'\033[30m
 _RED=	$'\033[31m
@@ -14,7 +22,7 @@ _CYAN=	$'\033[36m
 _WHITE=	$'\033[37m
 _END= 	$'\033[37m
 
-SRCS = 	srcs/ft_printf.c \
+SRC = 	srcs/ft_printf.c \
 		srcs/ft_putstr.c \
 		srcs/ft_flags.c \
 		srcs/ft_strrchr.c \
@@ -34,12 +42,11 @@ SRCS = 	srcs/ft_printf.c \
 		srcs/ft_sign.c \
 		srcs/ft_pre.c
 
-OBJ = $(SRCS:%.c=%.o)
+OBJ = $(addprefix $(OBJS_PATH), $(SRC:.c=.o))
 
-RM = rm -rf
-
-.c.o: includes/ft_printf.h ft_includes/ft_struct.h
-	@${CC} ${FLAGS} ${IFLAGS} -c $< -o ${<:.c=.o}
+$(OBJS_PATH)%.o: %.c $(HEADER)
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 	@printf "%-15s ${_YELLOW}${_BOLD}$<${_END}...\n" "Compiling"
 			
 $(NAME): 	$(OBJ)
@@ -53,7 +60,7 @@ clean:
 	@$(RM) $(OBJ)
 
 fclean:		clean
-	@$(RM) $(NAME)
+	@$(RM) $(NAME) $(OBJS_PATH)
 
 re: 		fclean all
 
