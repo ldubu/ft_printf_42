@@ -1,5 +1,17 @@
 NAME = libftprintf.a
+
 FLAGS = -Wall -Werror -Wextra 
+
+_GREY=	$'\033[30m
+_RED=	$'\033[31m
+_GREEN=	$'\033[32m
+_YELLOW=$'\033[33m
+_BLUE=	$'\033[34m
+_PURPLE=$'\033[35m
+_CYAN=	$'\033[36m
+_WHITE=	$'\033[37m
+_END= 	$'\033[37m
+
 SRCS = 	srcs/ft_printf.c \
 		srcs/ft_putstr.c \
 		srcs/ft_flags.c \
@@ -25,18 +37,21 @@ OBJ = $(SRCS:%.c=%.o)
 RM = rm -rf
 
 .c.o: includes/ft_printf.h ft_includes/ft_struct.h
-	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
+	@${CC} ${FLAGS} -c $< -o ${<:.c=.o}
+	@printf "%-15s ${_YELLOW}${_BOLD}$<${_END}...\n" "Compiling"
 			
 $(NAME): 	$(OBJ)
-	ar rc $(NAME) $(OBJ)
+	@printf "%-15s ${_PURPLE}${_BOLD}${NAME}${_END}...\n" "Compiling"
+	@ar rc $(NAME) $(OBJ)
+	@printf "\n${_GREEN}${_BOLD}Compilation done !${_END}\n"
 
 all: 		$(NAME)
 
 clean:
-	$(RM) $(OBJ)
+	@$(RM) $(OBJ)
 
 fclean:		clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: 		fclean all
 
