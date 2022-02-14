@@ -9,7 +9,7 @@
 /*   Updated: 2022/01/04 18:00:12 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 char	*ft_c_to_str(char c)
 {

@@ -9,7 +9,7 @@
 /*   Updated: 2022/01/04 17:54:44 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 static long long	ft_charnum(unsigned int n, int *i)
 {

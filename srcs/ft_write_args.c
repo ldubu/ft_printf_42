@@ -6,11 +6,11 @@
 /*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 16:20:24 by ldubuche          #+#    #+#             */
-/*   Updated: 2022/01/21 12:16:53 by ldubuche         ###   ########.fr       */
+/*   Updated: 2022/02/14 14:01:48 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 void	ft_write_arg(t_struct *f1, char *str)
 {

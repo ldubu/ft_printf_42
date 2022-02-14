@@ -9,7 +9,7 @@
 /*   Updated: 2022/01/04 18:46:52 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 char	*ft_strjoin(char const *s1, char const*s2)
 {

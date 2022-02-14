@@ -6,11 +6,11 @@
 /*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 17:27:01 by ldubuche          #+#    #+#             */
-/*   Updated: 2022/01/13 10:45:19 by ldubuche         ###   ########.fr       */
+/*   Updated: 2022/02/14 14:01:47 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

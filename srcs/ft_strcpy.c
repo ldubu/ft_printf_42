@@ -6,11 +6,11 @@
 /*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 10:14:10 by ldubuche          #+#    #+#             */
-/*   Updated: 2022/01/11 17:21:20 by ldubuche         ###   ########.fr       */
+/*   Updated: 2022/02/14 14:01:38 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 char	*ft_strcpy(const char *src, size_t dstsize)
 {

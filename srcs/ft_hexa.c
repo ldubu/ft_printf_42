@@ -9,7 +9,7 @@
 /*   Updated: 2022/01/04 18:03:45 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 char	*ft_hexa(unsigned int n)
 {

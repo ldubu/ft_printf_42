@@ -6,11 +6,11 @@
 /*   By: ldubuche <laura.dubuche@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 12:03:54 by ldubuche          #+#    #+#             */
-/*   Updated: 2022/01/21 12:06:17 by ldubuche         ###   ########.fr       */
+/*   Updated: 2022/02/14 14:01:35 by ldubuche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 char	*ft_pre(char *str, t_struct *f1)
 {
